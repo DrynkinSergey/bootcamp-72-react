@@ -25,7 +25,7 @@ const App = () => {
   ];
 
   const isOnline = false;
-  const age = 2;
+  const age = 21;
   const selectedTab = 'films';
   const loading = false;
   return (
@@ -34,7 +34,11 @@ const App = () => {
       <Header />
       <main>
         {isOnline && <h1>Welcome, friend!</h1>}
-        {age > 18 ? <h2 className='title'>Ого який дорослий!</h2> : <h2 className='title'>Тобі ще треба підрости!</h2>}
+        {age > 18 ? (
+          <h2 className='title green'>Ого який дорослий!</h2>
+        ) : (
+          <h2 className='title red'>Тобі ще треба підрости!</h2>
+        )}
 
         <div>
           <Button>Hello</Button>

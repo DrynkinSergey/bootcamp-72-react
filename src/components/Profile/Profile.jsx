@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import styles from './Profile.module.css';
+import styles from './Profile.module.scss';
+import clsx from 'clsx';
 const Profile = ({ firstName, lastName, age, image, phone, email, gender, address }) => {
   return (
     <div className={styles.wrapper}>
@@ -8,14 +9,17 @@ const Profile = ({ firstName, lastName, age, image, phone, email, gender, addres
         <h3 className={styles.title}>
           {firstName} {lastName}
         </h3>
-        <p>Phone: {phone}</p>
+        <span>Phone: {phone}</span>
         <p>Email: {email}</p>
-        <p>Age: {age}</p>
+        {/* <p className={`${styles.age} ${age > 18 ? styles.green : styles.red}`}>Age: {age}</p> */}
+        <p className={clsx(styles.age, styles.black, 'hello', age > 18 ? styles.green : styles.red)}>Age: {age}</p>
         <p>Gender: {gender}</p>
         <p>
           Address: {address.city} {address.address}
         </p>
-        <button className={styles.btn_profile}>EDIT</button>
+        <button disabled className={styles.btn_profile}>
+          EDIT
+        </button>
       </div>
     </div>
   );

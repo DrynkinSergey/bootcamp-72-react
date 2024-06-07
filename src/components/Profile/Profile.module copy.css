@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
- 
 }
 
 .card{
@@ -14,7 +13,16 @@
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
    text-align: center;
 
+  & span{
+     color: red;
+     font-style: italic;
+     &:hover{
+       color: green;
+     }
+   }
 }
+
+
 .img{
   width: 200px;
   height: 200px;
@@ -33,4 +41,7 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  &:disabled{
+    background-color: gray;
+  }
 }
