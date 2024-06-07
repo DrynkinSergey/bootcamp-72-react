@@ -9,7 +9,6 @@ import Profile from './components/Profile/Profile';
 import WelcomeSection from './components/WelcomeSection/WelcomeSection';
 
 import profileData from './assets/user.json'; //+
-import ProfileVanillaCSS from './components/Profile/ProfileVanillaCSS';
 const App = () => {
   const filmsData = [
     { id: '1', title: 'Batman', completed: false },
@@ -18,18 +17,26 @@ const App = () => {
     { id: '5', title: 'Taxi3', completed: false },
     { id: '6', title: 'Taxi333', completed: true },
   ];
-
   const goodsData = [
     { id: '1', title: 'Laptop', completed: true },
     { id: '2', title: 'Iphone 18 PRO MAX SUPER', completed: false },
   ];
 
+  const a = 'Alex';
   const isOnline = false;
   const age = 21;
   const selectedTab = 'films';
   const loading = false;
+
+  // console.log(`hello,${a}`);
+  console.log(`hello, ${a}`);
   return (
     <div>
+      <section>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt quidem soluta labore laborum consequatur illo
+        officia optio incidunt hic dignissimos sit sapiente adipisci deleniti, molestias, odio unde dolore fugit
+        quaerat?
+      </section>
       {loading && <h1>LOADING...</h1>}
       <Header />
       <main>
@@ -63,9 +70,6 @@ const App = () => {
 
         <AboutSection />
         <WelcomeSection></WelcomeSection>
-        <Message author='Olena' text='How are you?' isImportant={true} />
-        <Message author='Petro' text='React is so cool lib' />
-        <Message author='Ihor' text='Whats up!' />
 
         {selectedTab === 'films' ? (
           <List items={filmsData} user='Alex' title='Films list' count={filmsData.length} />
@@ -73,6 +77,9 @@ const App = () => {
           <List items={goodsData} title='Wishlist ' count={goodsData.length} />
         )}
       </main>
+      <Message isOnline={true} author='Olena' text='How are you?' isImportant={true} />
+      <Message isOnline={true} author='Petro' text='React is so cool lib' />
+      <Message isOnline={true} author='Ihor' text='Whats up!' />
 
       <div>
         <h2>Hello</h2>

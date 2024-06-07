@@ -5,7 +5,6 @@ import { IoCloseCircle } from 'react-icons/io5';
 import { FaClipboardList, FaRegUser } from 'react-icons/fa';
 import { FileX, Github } from 'lucide-react';
 const List = ({ title = 'DEFAULT SECTION', items = [], count, user }) => {
-  // const { title, items } = props;
   return (
     <>
       <h2 className={s.title}>
@@ -16,7 +15,7 @@ const List = ({ title = 'DEFAULT SECTION', items = [], count, user }) => {
         <h2 className={s.owner}>
           {' '}
           <FaRegUser className={s.userIcon} />
-          Owner: {user}
+          Owner: {user} 🚀
         </h2>
       )}
       <h3>Items count: {count}</h3>
@@ -37,6 +36,10 @@ const List = ({ title = 'DEFAULT SECTION', items = [], count, user }) => {
                 </>
               )}
             </p>
+            <h2 className={s.title}>
+              <FaClipboardList />
+              {title}
+            </h2>
             <button>
               <FileX size={32} className={s.deleteBtn} color='#00ccff' strokeWidth={1} />
             </button>
