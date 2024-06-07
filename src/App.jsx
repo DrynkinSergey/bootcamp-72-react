@@ -5,8 +5,10 @@ import Header from './components/Header/Header';
 import List from './components/List/List';
 import Message from './components/Message/Message';
 import Modal from './components/Modal/Modal';
+import Profile from './components/Profile/Profile';
 import WelcomeSection from './components/WelcomeSection/WelcomeSection';
 
+import profileData from './assets/user.json'; //+
 const App = () => {
   const filmsData = [
     { id: '1', title: 'Batman', completed: false },
@@ -38,10 +40,11 @@ const App = () => {
           <Button>Hello</Button>
           <Button>Submit</Button>
           <Button>
-            <h2>Welcome</h2>
-            <p>to React</p>
+            <h2>Test</h2>
+            Bla bla bla
           </Button>
         </div>
+        <Profile {...profileData} />
         <Modal>
           <h3>Продам холодильник</h3>
           <img
@@ -60,7 +63,7 @@ const App = () => {
 
         <AboutSection />
         <WelcomeSection></WelcomeSection>
-        <Message author='Olena' text='Hello!' />
+        <Message author='Olena' text='How are you?' isImportant={true} />
         <Message author='Petro' text='React is so cool lib' />
         <Message author='Ihor' text='Whats up!' />
 
