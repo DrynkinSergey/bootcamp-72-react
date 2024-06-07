@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 const Profile = ({ firstName, lastName, age, image, phone, email, gender, address }) => {
   return (

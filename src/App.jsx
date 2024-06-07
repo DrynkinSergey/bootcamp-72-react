@@ -14,7 +14,6 @@ const App = () => {
     { id: '1', title: 'Batman', completed: false },
     { id: '2', title: 'GoT', completed: true },
     { id: '3', title: 'Taxi', completed: false },
-
     { id: '5', title: 'Taxi3', completed: false },
     { id: '6', title: 'Taxi333', completed: true },
   ];
