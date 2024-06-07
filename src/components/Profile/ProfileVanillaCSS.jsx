@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import styles from './Profile.module.css';
-const Profile = ({ firstName, lastName, age, image, phone, email, gender, address }) => {
+import './Profile.css';
+const ProfileVanillaCSS = ({ firstName, lastName, age, image, phone, email, gender, address }) => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.card}>
-        <img className={styles.img} src={image} alt='profile' />
-        <h3 className={styles.title}>
+    <div className='wrapper'>
+      <div className='card'>
+        <img className='img' src={image} alt='profile' />
+        <h3 className='title'>
           {firstName} {lastName}
         </h3>
         <p>Phone: {phone}</p>
@@ -15,15 +15,14 @@ const Profile = ({ firstName, lastName, age, image, phone, email, gender, addres
         <p>
           Address: {address.city} {address.address}
         </p>
-        <button className={styles.btn_profile}>EDIT</button>
       </div>
     </div>
   );
 };
 
-export default Profile;
+export default ProfileVanillaCSS;
 
-Profile.propTypes = {
+ProfileVanillaCSS.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   age: PropTypes.number.isRequired,

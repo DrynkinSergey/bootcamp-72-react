@@ -1,19 +1,9 @@
 const Header = () => {
   return (
-    <header
-      style={{
-        display: 'flex',
-        fontSize: '20px',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '20px',
-        backgroundColor: 'teal',
-        color: 'white',
-      }}
-    >
-      <div>React</div>
+    <header className='header'>
+      <div className='header__logo'>React</div>
       <nav>
-        <ul style={{ display: 'flex', listStyle: 'none', gap: '20px' }}>
+        <ul className='header__nav'>
           <li>Home</li>
           <li>About</li>
           <li>Contact</li>

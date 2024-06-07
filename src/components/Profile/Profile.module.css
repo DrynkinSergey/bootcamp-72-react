@@ -1,0 +1,36 @@
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+ 
+}
+
+.card{
+   width: 400px;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+   text-align: center;
+
+}
+.img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.title{
+  font-size: 24px;
+  color:blue;
+  font-weight: bold;
+}
+.btn_profile{
+  padding: 4px 10px;
+  background-color: gold;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}

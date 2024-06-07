@@ -9,6 +9,7 @@ import Profile from './components/Profile/Profile';
 import WelcomeSection from './components/WelcomeSection/WelcomeSection';
 
 import profileData from './assets/user.json'; //+
+import ProfileVanillaCSS from './components/Profile/ProfileVanillaCSS';
 const App = () => {
   const filmsData = [
     { id: '1', title: 'Batman', completed: false },
@@ -33,15 +34,11 @@ const App = () => {
       <Header />
       <main>
         {isOnline && <h1>Welcome, friend!</h1>}
-        {age > 18 ? <h2>Ого який дорослий!</h2> : <h2>Тобі ще треба підрости!</h2>}
+        {age > 18 ? <h2 className='title'>Ого який дорослий!</h2> : <h2 className='title'>Тобі ще треба підрости!</h2>}
 
         <div>
           <Button>Hello</Button>
           <Button>Submit</Button>
-          <Button>
-            <h2>Test</h2>
-            Bla bla bla
-          </Button>
         </div>
         <Profile {...profileData} />
         <Modal>

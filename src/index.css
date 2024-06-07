@@ -1,0 +1,35 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  background-color: teal;
+  color: white;
+  font-weight: bold;
+}
+.header__logo{
+  font-size: 30px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.header__nav{
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+
+.title{
+  color: red
+}
+.btn{
+  padding: 4px 10px;
+  background-color: teal;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+/* BEM Block ELement Modificator  */
