@@ -20,7 +20,7 @@
 	padding: 10px;
 	border-radius: 12px;
 
-  h1{
+  & h1{
     color:tomato;
     font-size: 150px;
   }
