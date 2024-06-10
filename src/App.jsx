@@ -6,8 +6,8 @@ export const App = () => {
   return (
     <div>
       {/* <Counter /> */}
-      {/* <TodoList /> */}
-      <ColorPicker />
+      {/* <ColorPicker /> */}
+      <TodoList />
     </div>
   );
 };
