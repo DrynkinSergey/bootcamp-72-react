@@ -5,9 +5,9 @@ import { TodoList } from './components/TodoList/TodoList';
 export const App = () => {
   return (
     <div>
-      <Counter />
-      {/* <TodoList />
-      <ColorPicker /> */}
+      {/* <Counter /> */}
+      {/* <TodoList /> */}
+      <ColorPicker />
     </div>
   );
 };
