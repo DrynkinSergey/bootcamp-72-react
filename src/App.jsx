@@ -1,6 +1,7 @@
 import { ColorPicker } from './components/ColorPicker/ColorPicker';
 import { Counter } from './components/Counter/Counter';
 import { TodoList } from './components/TodoList/TodoList';
+import Vote from './components/Vote/Vote';
 
 export const App = () => {
   return (
@@ -8,6 +9,7 @@ export const App = () => {
       {/* <Counter /> */}
       {/* <ColorPicker /> */}
       <TodoList />
+      <Vote />
     </div>
   );
 };
