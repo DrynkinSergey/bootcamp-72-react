@@ -57,15 +57,14 @@ export const TodoList = () => {
   const handleDeleteSelected = () => {
     setTodos(prev => prev.filter(item => !item.completed));
   };
+  const toggleModal = () => setIsOpen(prev => !prev);
 
-  const handleOpenModal = () => setIsOpen(true);
-  const handleCloseModal = () => setIsOpen(false);
   const completedTasks = todos.reduce((total, item) => (item.completed ? total + 1 : total), 0);
   const value = (completedTasks / todos.length) * 100;
   return (
     <>
       <div className='flex'>
-        <button className='btn border' onClick={handleOpenModal}>
+        <button className='btn border' onClick={toggleModal}>
           Open modal
         </button>
         <input
@@ -104,7 +103,7 @@ export const TodoList = () => {
       </button>
 
       {isOpen && (
-        <Modal onClose={handleCloseModal} title='Adv'>
+        <Modal onClose={toggleModal} title='Adv'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quae vel ducimus assumenda harum. Blanditiis,
           vitae accusamus? Ipsum labore, tenetur dolore ullam eligendi minima ut, rerum fugiat numquam aspernatur velit!
         </Modal>
