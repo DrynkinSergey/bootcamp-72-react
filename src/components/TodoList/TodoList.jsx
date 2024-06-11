@@ -1,14 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import todosData from './../../assets/todos.json';
 import { TodoItem } from './TodoItem';
 import s from './TodoList.module.css';
 import { nanoid } from 'nanoid';
+import Modal from '../Modal/Modal';
 
 export const TodoList = () => {
-  const [todos, setTodos] = useState(todosData);
+  const [todos, setTodos] = useState(() => {
+    const todos = JSON.parse(window.localStorage.getItem('todos'));
+    if (todos.length) {
+      return todos;
+    }
+    return todosData;
+  });
+
   const [newTodoText, setNewTodoText] = useState('');
   const [searchValue, setSearchValue] = useState('');
-
+  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
   const handleDeleteTodo = id => {
     console.log(id);
     setTodos(prev => prev.filter(item => item.id !== id)); //+
@@ -25,7 +36,6 @@ export const TodoList = () => {
 
   const handleEditTodo = id => {
     console.log(id);
-    // setTodos(prev => prev.map(item => (item.id === id ? { ...item, todo: prompt('Enter new title:') } : item)));
     setTodos(prev =>
       prev.map(item => {
         if (item.id === id) {
@@ -47,11 +57,17 @@ export const TodoList = () => {
   const handleDeleteSelected = () => {
     setTodos(prev => prev.filter(item => !item.completed));
   };
+
+  const handleOpenModal = () => setIsOpen(true);
+  const handleCloseModal = () => setIsOpen(false);
   const completedTasks = todos.reduce((total, item) => (item.completed ? total + 1 : total), 0);
   const value = (completedTasks / todos.length) * 100;
   return (
     <>
       <div className='flex'>
+        <button className='btn border' onClick={handleOpenModal}>
+          Open modal
+        </button>
         <input
           value={searchValue}
           onChange={e => setSearchValue(e.target.value)}
@@ -64,8 +80,8 @@ export const TodoList = () => {
           Add
         </button>
       </div>
-      <h1> Completed tasks: {completedTasks}</h1>
-      <h2>Percantage of completed tasks: {Math.round((completedTasks / todos.length) * 100)}%</h2>
+      <h3> Completed tasks: {completedTasks}</h3>
+      <h4>Percantage of completed tasks: {Math.round((completedTasks / todos.length) * 100)}%</h4>
       <div className={s.wrapperProgress}>
         <div className={s.progress} style={{ width: `${value}%`, backgroundColor: value > 50 ? 'green' : 'red' }}></div>
       </div>
@@ -86,6 +102,13 @@ export const TodoList = () => {
       <button onClick={handleDeleteSelected} className='btn'>
         Delete selected
       </button>
+
+      {isOpen && (
+        <Modal onClose={handleCloseModal} title='Adv'>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quae vel ducimus assumenda harum. Blanditiis,
+          vitae accusamus? Ipsum labore, tenetur dolore ullam eligendi minima ut, rerum fugiat numquam aspernatur velit!
+        </Modal>
+      )}
     </>
   );
 };
