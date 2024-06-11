@@ -1,25 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from './Counter.module.css';
 
 export const Counter = () => {
-  const [counter, setCounter] = useState(0);
-  const [step, setStep] = useState('');
+  const [counter, setCounter] = useState(() => +window.localStorage.getItem('counter') || 0);
+  // const [counter, setCounter] = useState(0);
+  const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    console.log('Counter was mounted');
+  }, []);
+  console.log('RENDER');
+  useEffect(() => {
+    console.log('Counter was updated', counter);
+    window.localStorage.setItem('counter', counter);
+  }, [counter]);
+
+  useEffect(() => {
+    console.log('Step was updated', step);
+  }, [step]);
 
   const handlePlusClick = () => {
-    if (!step) {
-      return setStep(+prompt('At first enter step value!'));
-    }
     setCounter(prev => prev + step);
   };
   const handleMinusClick = () => {
-    if (!step) {
-      return setStep(+prompt('At first enter step value!'));
-    }
     setCounter(prev => prev - step);
   };
   const handleResetClick = () => {
     setCounter(0);
-    setStep('');
+    setStep(1);
   };
   const handleChangeStep = e => {
     console.log(e.target.value);
