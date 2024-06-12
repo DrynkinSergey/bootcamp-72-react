@@ -3,6 +3,7 @@ import s from './Articles.module.css';
 import { FaStar } from 'react-icons/fa';
 
 export const Article = ({
+  user,
   id,
   title,
   body,
@@ -27,15 +28,19 @@ export const Article = ({
         ))}
       </ul>
       <div className={s.buttons}>
-        <button onClick={() => handleChangeLike(id)} className='btn'>
-          Like
-        </button>
+        {user !== author && (
+          <button onClick={() => handleChangeLike(id)} className='btn'>
+            Like
+          </button>
+        )}
         <button onClick={() => openModal({ id, title, body, author, tags })} className='btn'>
           Show
         </button>
-        <button className='btn' onClick={() => deleteArticle(id)}>
-          Delete
-        </button>
+        {user === author && (
+          <button className='btn' onClick={() => deleteArticle(id)}>
+            Delete
+          </button>
+        )}
       </div>
     </li>
   );

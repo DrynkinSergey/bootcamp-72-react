@@ -65,6 +65,7 @@ export const App = () => {
         <Articles
           articles={getFilteredData()}
           searchStr={searchStr}
+          user={user}
           deleteArticle={deleteArticle}
           setSearchStr={setSearchStr}
           handleChangeLike={handleChangeLike}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Article } from './Article';
 import s from './Articles.module.css';
 import Modal from '../../components/Modal/Modal';
-export const List = ({ articles = [], deleteArticle, handleChangeLike }) => {
+export const List = ({ articles = [], user, deleteArticle, handleChangeLike }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState(null);
   const openModal = item => {
@@ -18,6 +18,7 @@ export const List = ({ articles = [], deleteArticle, handleChangeLike }) => {
       <ul className={s.list}>
         {articles.map(article => (
           <Article
+            user={user}
             key={article.id}
             openModal={openModal}
             {...article}

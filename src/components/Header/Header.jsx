@@ -7,7 +7,6 @@ export const Header = ({ logout, user, setPage }) => {
       <nav>
         <ul>
           <li onClick={() => setPage('home')}>Home</li>
-          <li onClick={() => setPage('archive')}>Archive</li>
           <li onClick={() => setPage('addArticle')}>New Article</li>
           <li>
             <button onClick={logout} className='btn'>
