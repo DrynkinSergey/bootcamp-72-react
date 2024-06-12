@@ -3,6 +3,7 @@ import { Header } from './components/Header/Header';
 import { Login } from './pages/Login/Login';
 import { Articles } from './pages/Articles/Articles';
 import { AddArticle } from './pages/AddAritcle/AddArticle';
+import { nanoid } from 'nanoid';
 
 export const App = () => {
   const [user, setUser] = useState(() => window.localStorage.getItem('username') || '');
@@ -35,6 +36,17 @@ export const App = () => {
   };
   const handleLogout = () => setUser('');
 
+  const addArticle = article => {
+    const newArticle = {
+      ...article,
+      tags: article.tags.split(',').map(tag => tag.trim()),
+      id: nanoid(),
+      author: user,
+      date: new Date(),
+    };
+    setArticles(prev => [...prev, newArticle]);
+  };
+
   if (!user) {
     return <Login handleLogin={handleLogin} />;
   }
@@ -43,7 +55,7 @@ export const App = () => {
     <>
       <Header setPage={setPage} logout={handleLogout} user={user} />
       {page === 'home' && <Articles articles={articles} deleteArticle={deleteArticle} />}
-      {page === 'addArticle' && <AddArticle />}
+      {page === 'addArticle' && <AddArticle addArticle={addArticle} />}
     </>
   );
 };
