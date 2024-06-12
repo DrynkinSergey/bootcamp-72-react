@@ -55,7 +55,7 @@ export const App = () => {
     <>
       <Header setPage={setPage} logout={handleLogout} user={user} />
       {page === 'home' && <Articles articles={articles} deleteArticle={deleteArticle} />}
-      {page === 'addArticle' && <AddArticle addArticle={addArticle} />}
+      {page === 'addArticle' && <AddArticle addArticle={addArticle} setPage={setPage} />}
     </>
   );
 };

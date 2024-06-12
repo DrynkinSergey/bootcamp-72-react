@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import s from './AddArticle.module.css';
 import clsx from 'clsx';
-export const AddArticle = ({ addArticle }) => {
+export const AddArticle = ({ addArticle, setPage }) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const [tags, setTags] = useState('');
@@ -11,6 +11,9 @@ export const AddArticle = ({ addArticle }) => {
     setTitle('');
     setBody('');
     setTags('');
+    setTimeout(() => {
+      setPage('home');
+    }, 500);
   };
   return (
     <div className={s.wrapper}>
