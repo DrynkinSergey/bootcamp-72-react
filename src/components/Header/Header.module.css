@@ -1,0 +1,25 @@
+.header{
+  background-color: teal;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color:white;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  ul{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: black;
+    li{
+      list-style: none;
+      font-size: 1.5rem;
+
+      &:hover{
+        color: red;
+        cursor: pointer;
+      }
+    }
+  }
+}

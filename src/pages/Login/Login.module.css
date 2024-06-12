@@ -1,0 +1,14 @@
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.loginForm{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.4);
+}
