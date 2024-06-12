@@ -2,10 +2,13 @@ import { formatDistanceToNow } from 'date-fns';
 import { cutText } from '../../helpers/cutText';
 import s from './Articles.module.css';
 import { FaStar } from 'react-icons/fa';
+import { Rating } from '@mui/material';
 
 export const Article = ({
   user,
   id,
+  setNewRating,
+  rating = 0,
   title,
   body,
   author,
@@ -30,6 +33,13 @@ export const Article = ({
           </li>
         ))}
       </ul>
+      <Rating
+        name='size-large'
+        defaultValue={rating}
+        max={10}
+        onChange={(e, value) => setNewRating(id, value)}
+        size='large'
+      />
       <div className={s.buttons}>
         {user !== author && (
           <button onClick={() => handleChangeLike(id)} className='btn'>

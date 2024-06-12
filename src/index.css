@@ -49,6 +49,11 @@ img {
   font-size: 1.5rem;
   border: 1px solid black;
 
+
+  &.active {
+		color: white;
+    background-color: #091ec2;
+  }
 	&:hover {
 		background-color: #091ec2;
 		color: white;
@@ -61,3 +66,4 @@ img {
   border:none;
   box-shadow: 2px 2px 2px 2px gray;
 }
+

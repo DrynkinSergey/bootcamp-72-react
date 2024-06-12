@@ -16,6 +16,7 @@ export const App = () => {
   });
   const [page, setPage] = useState('home');
   const [searchStr, setSearchStr] = useState('');
+  const [filter, setFilter] = useState('all');
 
   const deleteArticle = id => {
     setArticles(prev => prev.filter(item => item.id !== id));
@@ -57,17 +58,40 @@ export const App = () => {
   const handleChangeLike = id => {
     setArticles(prev => prev.map(item => (item.id === id ? { ...item, liked: !item.liked } : item)));
   };
+  const filteredData = getFilteredData();
+  const sortData = () => {
+    switch (filter) {
+      case 'newest': {
+        return filteredData.sort((a, b) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        });
+      }
 
+      case 'oldest':
+        return filteredData.toSorted((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      case 'liked':
+        return filteredData.filter(item => item.liked);
+      default:
+        return articles;
+    }
+  };
+
+  const setNewRating = (id, newRating) => {
+    setArticles(prev => prev.map(item => (item.id === id ? { ...item, rating: newRating } : item)));
+  };
   return (
     <>
       <Header setPage={setPage} logout={handleLogout} user={user} />
       {page === 'home' && (
         <Articles
-          articles={getFilteredData()}
+          filter={filter}
+          setFilter={setFilter}
+          articles={sortData()}
           searchStr={searchStr}
           user={user}
           deleteArticle={deleteArticle}
           setSearchStr={setSearchStr}
+          setNewRating={setNewRating}
           handleChangeLike={handleChangeLike}
         />
       )}
