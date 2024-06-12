@@ -1,9 +1,23 @@
+import { cutText } from '../../helpers/cutText';
 import s from './Articles.module.css';
-export const Article = ({ id, title, body, author, deleteArticle, tags = [] }) => {
+import { FaStar } from 'react-icons/fa';
+
+export const Article = ({
+  id,
+  title,
+  body,
+  author,
+  liked = false,
+  tags = [],
+  deleteArticle,
+  handleChangeLike,
+  openModal,
+}) => {
   return (
     <li className={s.card}>
+      {liked && <FaStar color='gold' className={s.starIcon} />}
       <h3>{title}</h3>
-      <p className={s.body}>{body}</p>
+      <p className={s.body}>{cutText(body, 70)}</p>
       <p className={s.author}>{author}</p>
       <ul className={s.tags}>
         {tags.map(tag => (
@@ -13,8 +27,12 @@ export const Article = ({ id, title, body, author, deleteArticle, tags = [] }) =
         ))}
       </ul>
       <div className={s.buttons}>
-        <button className='btn'>Like</button>
-        <button className='btn'>Show</button>
+        <button onClick={() => handleChangeLike(id)} className='btn'>
+          Like
+        </button>
+        <button onClick={() => openModal({ id, title, body, author, tags })} className='btn'>
+          Show
+        </button>
         <button className='btn' onClick={() => deleteArticle(id)}>
           Delete
         </button>
