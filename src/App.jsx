@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Header } from './components/Header/Header';
 import { Login } from './pages/Login/Login';
 import { Articles } from './pages/Articles/Articles';
+import { AddArticle } from './pages/AddAritcle/AddArticle';
 
 export const App = () => {
   const [user, setUser] = useState(() => window.localStorage.getItem('username') || '');
@@ -19,6 +20,7 @@ export const App = () => {
       author: 'Jane Dou',
     },
   ]);
+  const [page, setPage] = useState('home');
 
   const deleteArticle = id => {
     setArticles(prev => prev.filter(item => item.id !== id));
@@ -39,8 +41,9 @@ export const App = () => {
 
   return (
     <>
-      <Header logout={handleLogout} user={user} />
-      <Articles articles={articles} deleteArticle={deleteArticle} />
+      <Header setPage={setPage} logout={handleLogout} user={user} />
+      {page === 'home' && <Articles articles={articles} deleteArticle={deleteArticle} />}
+      {page === 'addArticle' && <AddArticle />}
     </>
   );
 };
