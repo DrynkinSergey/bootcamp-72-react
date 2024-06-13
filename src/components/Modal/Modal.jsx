@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import s from './Modal.module.css';
+import { motion } from 'framer-motion';
+
 const Modal = ({ children, title = 'Default modal', onClose }) => {
   useEffect(() => {
     console.log('Модальне вікно відкрилось!');
@@ -34,7 +36,12 @@ const Modal = ({ children, title = 'Default modal', onClose }) => {
 
   return (
     <div onClick={handleBackdropClick} className={s.wrapper}>
-      <div className={s.content}>
+      <motion.div
+        initial={{ opacity: 0, y: 400 }}
+        animate={{ opacity: 1, y: 0, transition: { duration: 0.5, type: 'spring' } }}
+        exit={{ opacity: 0, y: -400, rotate: 360, transition: { duration: 0.5 }, scale: 0.5 }}
+        className={s.content}
+      >
         <>
           <h1>{title}</h1>
           <hr />
@@ -43,7 +50,7 @@ const Modal = ({ children, title = 'Default modal', onClose }) => {
           ×
         </button>
         {children}
-      </div>
+      </motion.div>
     </div>
   );
 };
