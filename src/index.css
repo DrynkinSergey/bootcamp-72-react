@@ -72,6 +72,9 @@ img {
   place-content: center;
   min-height: 100vh;
 }
+.red{
+  color: red;
+}
 .form{
   display: flex;
   flex-direction: column;
