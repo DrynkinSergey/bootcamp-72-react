@@ -1,12 +1,7 @@
-export const Form = ({ register }) => {
+export const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.target;
-    const password = form.elements.password.value;
-    const email = form.elements.email.value;
-    const username = form.elements.username.value;
-    register({ username, email, password });
-    form.reset();
+    console.log('Registered!');
   };
   return (
     <div className='formWrapper'>
