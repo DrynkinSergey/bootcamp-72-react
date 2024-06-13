@@ -32,6 +32,12 @@
 	outline: none;
 	border-bottom: 1px solid;
 }
+.openToWork {
+	background-color: rgb(162, 248, 162);
+}
+.closeToWork {
+	background-color: rgb(255, 150, 150);
+}
 .filtersWrapper {
   display: flex;
   padding: 5px 20px;
