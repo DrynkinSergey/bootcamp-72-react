@@ -1,4 +1,3 @@
-import { Employee } from './components/Employees/Employee';
 import FormControlled from './components/Forms/FormControlled';
 
 export const App = () => {
