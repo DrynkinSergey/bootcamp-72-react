@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import { petFormSchema } from '../../schemas/petForm';
 import { CustomInput } from './CustomInput';
 
