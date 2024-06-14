@@ -47,7 +47,7 @@ img {
 	background-color: white;
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   border: 1px solid black;
 
 	&:hover {
@@ -64,6 +64,10 @@ img {
   span{
     font-weight: bold;
   }
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
 }
 .formWrapper{
   display: grid;

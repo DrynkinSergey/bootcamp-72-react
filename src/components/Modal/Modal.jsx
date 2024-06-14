@@ -23,12 +23,19 @@ const Modal = ({ children, title = 'Default modal', onClose }) => {
     }
   };
 
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
   return (
     <div onClick={handleBackdropClick} className={s.wrapper}>
       <motion.div
         initial={{ opacity: 0, y: 400 }}
         animate={{ opacity: 1, y: 0, transition: { duration: 0.5, type: 'spring' } }}
-        exit={{ opacity: 0, y: -400, rotate: 360, transition: { duration: 0.5 }, scale: 0.5 }}
+        exit={{ opacity: 0, y: 400, transition: { duration: 0.5 }, scale: 0.5 }}
         className={s.content}
       >
         <>
