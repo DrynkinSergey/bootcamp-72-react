@@ -1,5 +1,4 @@
 import { Field, Form, Formik } from 'formik';
-
 export const PetForm = () => {
   const handleSubmit = (values, options) => {
     console.log(values);
@@ -19,7 +18,7 @@ export const PetForm = () => {
 
   return (
     <div className='formWrapper'>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik validationSchema={validationSchema} initialValues={initialValues} onSubmit={handleSubmit}>
         <Form className='form'>
           <label className='label'>
             <span>Owner Name:</span>

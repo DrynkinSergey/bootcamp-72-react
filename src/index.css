@@ -75,6 +75,10 @@ img {
 .red{
   color: red;
 }
+.errorField{
+  color: red;
+  font-size: 1rem;
+}
 .form{
   display: flex;
   flex-direction: column;

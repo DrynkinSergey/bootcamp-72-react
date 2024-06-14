@@ -1,4 +1,6 @@
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { petFormSchema } from '../../schemas/petForm';
+import { CustomInput } from './CustomInput';
 
 export const PetForm = () => {
   const handleSubmit = (values, options) => {
@@ -19,28 +21,19 @@ export const PetForm = () => {
 
   return (
     <div className='formWrapper'>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik validationSchema={petFormSchema} initialValues={initialValues} onSubmit={handleSubmit}>
         <Form className='form'>
-          <label className='label'>
-            <span>Owner Name:</span>
-            <Field name='ownerName' className='input' placeholder='Enter owner name' />
-          </label>
-          <label className='label'>
-            <span>Owner Phone:</span>
-            <Field name='phone' className='input' placeholder='Enter owner name' />
-          </label>
-          <label className='label'>
-            <span>Owner Email:</span>
-            <Field name='email' className='input' placeholder='Enter owner name' />
-          </label>
-          <label className='label'>
-            <span>Pet name:</span>
-            <Field name='petName' className='input' placeholder='Enter pet name' />
-          </label>
-          <label className='label'>
-            <span>Additional info:</span>
-            <Field as='textarea' rows='5' name='additional' className='input' placeholder='Enter other info' />
-          </label>
+          <CustomInput label='Owner Name:' name='ownerName' placeholder='Enter owner name' />
+          <CustomInput label='Owner Phone:' type='number' name='phone' placeholder='Enter owner phone' />
+          <CustomInput label='Owner Email:' name='email' placeholder='Enter owner email' />
+          <CustomInput label='Pet name:' name='petName' placeholder='Enter pet name' />
+          <CustomInput
+            as='textarea'
+            rows='5'
+            label='Additional info:'
+            name='additional'
+            placeholder='Enter other info'
+          />
 
           <label className='label'>
             <span>City:</span>
