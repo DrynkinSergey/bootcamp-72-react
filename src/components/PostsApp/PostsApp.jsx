@@ -5,6 +5,7 @@ import { List } from './List';
 import { SearchBar } from './SearchBar';
 import { Loader } from './Loader';
 import Modal from '../Modal/Modal';
+import { SkeletonCard } from '../Skeleton/SkeletonCard';
 export const PostsApp = () => {
   const [posts, setPosts] = useState([]);
   const [skip, setSkip] = useState(0);
@@ -48,9 +49,8 @@ export const PostsApp = () => {
       <SearchBar setQuery={handleSetQuery} />
       {query && <h2>Search query: {query}</h2>}
 
-      <List openPostsDetails={openPostsDetails} posts={posts} />
+      <List openPostsDetails={openPostsDetails} posts={posts} isLoading={isLoading} />
 
-      {isLoading && <Loader />}
       {error && <div>Something went wrong</div>}
       {!isLoading && !posts.length && <div>By query `{query}` not found posts</div>}
       {!isLoading && posts.length < total && (
@@ -60,6 +60,7 @@ export const PostsApp = () => {
           </button>
         </div>
       )}
+
       {isOpen && (
         <Modal title={modalContent.title} onClose={toggleModal}>
           <p>{modalContent.body}</p>

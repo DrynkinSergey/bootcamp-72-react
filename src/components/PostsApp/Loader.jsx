@@ -11,7 +11,7 @@ export const Loader = () => {
         wrapperStyle={{}}
         wrapperClass=''
         color='#fff'
-        backgroundColor='#F4442E'
+        backgroundColor='#a007ff'
       />
     </div>
   );
