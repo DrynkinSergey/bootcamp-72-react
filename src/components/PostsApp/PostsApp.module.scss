@@ -1,0 +1,17 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 20px;
+  list-style: none;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px 5px violet;
+  &:hover {
+    box-shadow: 2px 2px 9px 7px violet;
+  }
+}

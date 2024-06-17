@@ -1,9 +1,9 @@
-import { StoreApp } from './components/StoreApp/StoreApp';
+import { PostsApp } from './components/PostsApp/PostsApp';
 
 export const App = () => {
   return (
     <>
-      <StoreApp />
+      <PostsApp />
     </>
   );
 };
