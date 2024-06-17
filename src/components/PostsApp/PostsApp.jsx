@@ -4,6 +4,7 @@ import s from './PostsApp.module.scss';
 import { List } from './List';
 import { SearchBar } from './SearchBar';
 import { Loader } from './Loader';
+import Modal from '../Modal/Modal';
 export const PostsApp = () => {
   const [posts, setPosts] = useState([]);
   const [skip, setSkip] = useState(0);
@@ -11,6 +12,8 @@ export const PostsApp = () => {
   const [error, setError] = useState(false);
   const [query, setQuery] = useState('');
   const [total, setTotal] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -29,6 +32,11 @@ export const PostsApp = () => {
     //IIFE =  Immediate Invoked Function Expression
   }, [skip, query]);
 
+  const toggleModal = () => setIsOpen(prev => !prev);
+  const openPostsDetails = post => {
+    toggleModal();
+    setModalContent(post);
+  };
   const handleSetQuery = query => {
     setQuery(query);
     setPosts([]);
@@ -40,7 +48,7 @@ export const PostsApp = () => {
       <SearchBar setQuery={handleSetQuery} />
       {query && <h2>Search query: {query}</h2>}
 
-      <List posts={posts} />
+      <List openPostsDetails={openPostsDetails} posts={posts} />
 
       {isLoading && <Loader />}
       {error && <div>Something went wrong</div>}
@@ -51,6 +59,23 @@ export const PostsApp = () => {
             Load more
           </button>
         </div>
+      )}
+      {isOpen && (
+        <Modal title={modalContent.title} onClose={toggleModal}>
+          <p>{modalContent.body}</p>
+          <ul className={s.list}>
+            {modalContent.tags.map(tag => (
+              <li className={s.item} key={tag}>
+                {tag}
+              </li>
+            ))}
+          </ul>
+          <div>
+            <p>Likes: {modalContent.reactions.likes}</p>
+            <p>Dislikes: {modalContent.reactions.dislikes}</p>
+          </div>
+          <p>Views: {modalContent.views}</p>
+        </Modal>
       )}
     </div>
   );
