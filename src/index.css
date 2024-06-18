@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+body{
+  font-size: 24px;
+}
 .btn{
   padding: 10px 22px;
 	border-radius: 4px;
@@ -28,10 +30,7 @@
     font-weight: bold;
   }
 }
-.flex{
-  display: flex;
-  justify-content: space-between;
-}
+
 .formWrapper{
   display: grid;
   /* justify-content: center;

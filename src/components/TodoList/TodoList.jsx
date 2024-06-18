@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import todosData from './../../assets/todos.json';
 import { TodoItem } from './TodoItem';
 import s from './TodoList.module.css';
 import { nanoid } from 'nanoid';
 import Modal from '../Modal/Modal';
+import { AuthContext } from '../../context/ContextProvider';
 
 export const TodoList = () => {
   const [todos, setTodos] = useState(() => {
@@ -13,7 +14,8 @@ export const TodoList = () => {
     }
     return todosData;
   });
-
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const [newTodoText, setNewTodoText] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
