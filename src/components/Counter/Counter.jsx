@@ -1,10 +1,30 @@
 import { useCallback } from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import { useMemo } from 'react';
 import { useState } from 'react';
 
 export const Counter = () => {
   const [counter, setCounter] = useState(0);
   const [value, setValue] = useState(1);
+  const myBtnRef = useRef();
+  const renderCount = useRef(0);
+  const firstRenderRef = useRef(true);
+
+  let btn = document.querySelector('#btn');
+  // const [renderCountState, setRenderCountState] = useState(0);
+  useEffect(() => {
+    renderCount.current++;
+    console.log(renderCount.current);
+    // console.log(renderCountState);
+  });
+  useEffect(() => {
+    if (renderCount.current === 4) {
+      return;
+    }
+    console.log('Counter updated');
+  }, [counter]);
+
   const handlePlusClick = () => {
     setCounter(prev => prev + 1);
   };
@@ -31,7 +51,6 @@ export const Counter = () => {
     return value * value;
   }, [value]);
 
-  console.log('Render');
   const result = useMemo(() => calcHardValue(), [calcHardValue]);
   return (
     <div className='grid place-content-center min-h-screen'>
@@ -45,7 +64,7 @@ export const Counter = () => {
           <button onClick={handleResetClick} className='btn'>
             Reset
           </button>
-          <button onClick={handlePlusClick} className='btn'>
+          <button id='btn' ref={myBtnRef} onClick={handlePlusClick} className='btn'>
             Plus
           </button>
           <button onClick={() => setValue(prev => prev + 1)} className='btn'>
