@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { fetchUsersById } from '../services/api';
 import { useHttp } from '../hooks/useHttp';
