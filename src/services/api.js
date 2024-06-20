@@ -21,3 +21,8 @@ export const getPostsByQuery = async options => {
   });
   return data;
 };
+
+export const fetchUsers = async () => {
+  const { data } = await axios.get('/users');
+  return data.users;
+};
