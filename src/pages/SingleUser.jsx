@@ -1,18 +1,11 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { fetchUsersById } from '../services/api';
+import { useHttp } from '../hooks/useHttp';
 
 export const SingleUser = () => {
   const { userId } = useParams();
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    const getUser = async () => {
-      const data = await fetchUsersById(userId);
-      setUser(data);
-    };
-    getUser();
-  }, [userId]);
-
+  const { data: user } = useHttp(fetchUsersById, userId);
   if (!user) return <h2> Loading...</h2>;
 
   return (

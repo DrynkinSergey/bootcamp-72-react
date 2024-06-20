@@ -1,19 +1,12 @@
-import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchPostsByUserId } from '../../services/api';
 import Modal from '../Modal/Modal';
 import { useToggle } from '../../hooks/useToggle';
+import { useHttp } from '../../hooks/useHttp';
 
 export const PostsByUser = () => {
   const { userId } = useParams();
-  const [posts, setPosts] = useState(null);
-  useEffect(() => {
-    const getPosts = async () => {
-      const data = await fetchPostsByUserId(userId);
-      setPosts(data);
-    };
-    getPosts();
-  }, [userId]);
+  const { data: posts } = useHttp(fetchPostsByUserId, userId);
 
   const { isOpen, close, open } = useToggle();
   return (
