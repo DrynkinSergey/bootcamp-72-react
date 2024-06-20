@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
   const buildLinkClass = ({ isActive }) => {
@@ -7,7 +7,7 @@ export const Header = () => {
   };
   return (
     <header className='px-5 py-4 text-2xl flex justify-between items-center text-white bg-teal-500 font-bold'>
-      <h1>Header</h1>
+      <h1>React Router</h1>
       <nav className='flex gap-4'>
         <NavLink className={buildLinkClass} to='/'>
           Home
