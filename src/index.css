@@ -52,3 +52,8 @@ body{
   padding: 20px 40px;
   box-shadow: 0 0 8px 5px lightskyblue;
 }
+.activeNavLink{
+  color:black;
+  border-bottom: black;
+  padding-bottom: 5px;
+}
