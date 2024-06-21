@@ -40,3 +40,16 @@ export const fetchPostById = async id => {
   const { data } = await axios.get(`posts/${id}`);
   return data;
 };
+
+export const fetchRecipes = async () => {
+  const { data } = await axios.get('/recipes');
+  return data.recipes;
+};
+export const fetchRecipesByQuery = async query => {
+  const { data } = await axios.get(`/recipes/search?q=${query}`);
+  return data.recipes;
+};
+export const fetchRecipeById = async id => {
+  const { data } = await axios.get(`/recipes/${id}`);
+  return data;
+};

@@ -11,6 +11,8 @@ import Team from './components/Nested/Team';
 import InfoUser from './components/Nested/InfoUser';
 import PostsByUser from './components/Nested/PostsByUser';
 import PostDetails from './components/Nested/PostDetails';
+import Recipes from './pages/Recipes';
+import SingleRecipe from './pages/SingleRecipe';
 
 export const App = () => {
   return (
@@ -26,6 +28,12 @@ export const App = () => {
           </Route>
 
           <Route path='users' element={<Users />} />
+
+          <Route path='recipes' element={<Recipes />} />
+          <Route path='recipes/:recipeId' element={<SingleRecipe />}>
+            <Route path='info' element={<h2>recipe info</h2>} />
+          </Route>
+
           <Route path='users/:userId' element={<SingleUser />}>
             <Route path='info' element={<InfoUser />} />
 

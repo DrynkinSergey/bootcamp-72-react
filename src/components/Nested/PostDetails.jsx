@@ -10,9 +10,9 @@ export const PostDetails = () => {
   if (isError) return <h2>Error</h2>;
   return (
     <div>
-      <h2>{post.title}</h2>
-      <p>{post.body}</p>
-      <p>{post.views}</p>
+      <h2>{post?.title}</h2>
+      <p>{post?.body}</p>
+      <p>{post?.views}</p>
     </div>
   );
 };
