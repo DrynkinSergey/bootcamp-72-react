@@ -14,6 +14,8 @@ import { Users } from './pages/Users';
 // import Recipes from './pages/Recipes';
 // import SingleRecipe from './pages/SingleRecipe';
 import { lazy } from 'react';
+import { Login } from './pages/Login';
+import { PrivateRoute } from './routes/PrivateRoute';
 
 const SingleUser = lazy(() => import('./pages/SingleUser'));
 const Aim = lazy(() => import('./components/Nested/Aim'));
@@ -31,7 +33,14 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Layout />}>
+        <Route
+          path='/'
+          element={
+            <PrivateRoute>
+              <Layout />
+            </PrivateRoute>
+          }
+        >
           <Route index element={<Homepage />} />
 
           <Route path='about' element={<About />}>
@@ -57,7 +66,9 @@ export const App = () => {
           </Route>
         </Route>
 
-        <Route path='/login' element={<h2>login</h2>} />
+        {/* <Route path='/login' element={<h2>login</h2>} /> */}
+        <Route path='/login' element={<Login />} />
+
         {/* <Route path='*' element={<Navigate to='/' />} /> */}
         <Route path='*' element={<NotFound />} />
       </Routes>

@@ -2,6 +2,7 @@ import { Link, NavLink, Outlet, useNavigate, useParams } from 'react-router-dom'
 import { fetchUsersById } from '../services/api';
 import { useHttp } from '../hooks/useHttp';
 import { Suspense, useEffect } from 'react';
+import { ColorRing } from 'react-loader-spinner';
 
 export const SingleUser = () => {
   const { userId } = useParams();
@@ -41,7 +42,19 @@ export const SingleUser = () => {
           </li>
         </ul>
       </nav>
-      <Suspense fallback='USERS SUSPENSE...'>
+      <Suspense
+        fallback={
+          <ColorRing
+            visible={true}
+            height='80'
+            width='80'
+            ariaLabel='color-ring-loading'
+            wrapperStyle={{}}
+            wrapperClass='color-ring-wrapper'
+            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+          />
+        }
+      >
         <Outlet />
       </Suspense>
     </div>

@@ -5,31 +5,9 @@
 body{
   font-size: 24px;
 }
-.btn{
-  padding: 10px 22px;
-	border-radius: 4px;
-	border: none;
-	background-color: white;
-	transition: all 0.2s ease-in-out;
-	cursor: pointer;
-  font-size: 1.5rem;
-  border: 1px solid black;
 
-	&:hover {
-		background-color: #091ec2;
-		color: white;
-	}
-}
 
-.label{
-  display: flex;
-  gap:5px;
-  flex-direction: column;
 
-  span{
-    font-weight: bold;
-  }
-}
 
 .formWrapper{
   display: grid;
@@ -38,20 +16,12 @@ body{
   place-content: center;
   min-height: 100vh;
 }
-.red{
-  color: red;
-}
+
 .errorField{
   color: red;
   font-size: 1rem;
 }
-.form{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px 40px;
-  box-shadow: 0 0 8px 5px lightskyblue;
-}
+
 .activeNavLink{
   color:black;
   border-bottom: black;

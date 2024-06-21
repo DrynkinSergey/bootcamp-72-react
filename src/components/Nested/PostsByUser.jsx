@@ -4,6 +4,7 @@ import Modal from '../Modal/Modal';
 import { useToggle } from '../../hooks/useToggle';
 import { useHttp } from '../../hooks/useHttp';
 import { Suspense } from 'react';
+import { DNA } from 'react-loader-spinner';
 
 export const PostsByUser = () => {
   const { userId } = useParams();
@@ -33,7 +34,18 @@ export const PostsByUser = () => {
         )}
       </section>
 
-      <Suspense fallback='POSTS SUSPENSE...'>
+      <Suspense
+        fallback={
+          <DNA
+            visible={true}
+            height='80'
+            width='80'
+            ariaLabel='dna-loading'
+            wrapperStyle={{}}
+            wrapperClass='dna-wrapper'
+          />
+        }
+      >
         <Outlet />
       </Suspense>
     </div>
