@@ -1,12 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../Header';
+import { Suspense } from 'react';
 
 export const Layout = () => {
   return (
     <>
       <Header />
       <main className='p-5 '>
-        <Outlet />
+        <Suspense fallback='Loading...'>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

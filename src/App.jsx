@@ -1,18 +1,31 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Homepage from './pages/Homepage';
-import About from './pages/About';
+// import About from './pages/About';
 import Layout from './components/Layout';
-import NotFound from './pages/NotFound';
+// import NotFound from './pages/NotFound';
 import { Users } from './pages/Users';
-import SingleUser from './pages/SingleUser';
-import Aim from './components/Nested/Aim';
-import Company from './components/Nested/Company';
-import Team from './components/Nested/Team';
-import InfoUser from './components/Nested/InfoUser';
-import PostsByUser from './components/Nested/PostsByUser';
-import PostDetails from './components/Nested/PostDetails';
-import Recipes from './pages/Recipes';
-import SingleRecipe from './pages/SingleRecipe';
+// import SingleUser from './pages/SingleUser';
+// import Aim from './components/Nested/Aim';
+// import Company from './components/Nested/Company';
+// import Team from './components/Nested/Team';
+// import InfoUser from './components/Nested/InfoUser';
+// import PostsByUser from './components/Nested/PostsByUser';
+// import PostDetails from './components/Nested/PostDetails';
+// import Recipes from './pages/Recipes';
+// import SingleRecipe from './pages/SingleRecipe';
+import { lazy } from 'react';
+
+const SingleUser = lazy(() => import('./pages/SingleUser'));
+const Aim = lazy(() => import('./components/Nested/Aim'));
+const Company = lazy(() => import('./components/Nested/Company'));
+const Team = lazy(() => import('./components/Nested/Team'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const About = lazy(() => import('./pages/About'));
+const InfoUser = lazy(() => import('./components/Nested/InfoUser'));
+const PostsByUser = lazy(() => import('./components/Nested/PostsByUser'));
+const PostDetails = lazy(() => import('./components/Nested/PostDetails'));
+const SingleRecipe = lazy(() => import('./pages/SingleRecipe'));
+const Recipes = lazy(() => import('./pages/Recipes'));
 
 export const App = () => {
   return (

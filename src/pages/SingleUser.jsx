@@ -1,7 +1,7 @@
 import { Link, NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { fetchUsersById } from '../services/api';
 import { useHttp } from '../hooks/useHttp';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 
 export const SingleUser = () => {
   const { userId } = useParams();
@@ -41,7 +41,9 @@ export const SingleUser = () => {
           </li>
         </ul>
       </nav>
-      <Outlet />
+      <Suspense fallback='USERS SUSPENSE...'>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

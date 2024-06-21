@@ -3,6 +3,7 @@ import { fetchPostsByUserId } from '../../services/api';
 import Modal from '../Modal/Modal';
 import { useToggle } from '../../hooks/useToggle';
 import { useHttp } from '../../hooks/useHttp';
+import { Suspense } from 'react';
 
 export const PostsByUser = () => {
   const { userId } = useParams();
@@ -32,7 +33,9 @@ export const PostsByUser = () => {
         )}
       </section>
 
-      <Outlet />
+      <Suspense fallback='POSTS SUSPENSE...'>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
