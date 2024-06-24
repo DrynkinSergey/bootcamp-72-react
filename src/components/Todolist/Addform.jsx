@@ -1,9 +1,13 @@
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../redux/todolist/actions';
 
 export const Addform = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
   const onSubmit = data => {
-    console.log(data);
+    dispatch(addItem(data.todo));
+    reset();
   };
   return (
     <div className='py-4 '>
