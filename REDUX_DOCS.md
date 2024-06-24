@@ -6,10 +6,7 @@
    ` npm i react-redux`
 1. Підключити devTools
 
-`
-npm install @redux-devtools/extension
-
-`
+`npm install @redux-devtools/extension`
 
 1. Створюємо папку `redux`
 1. Створюємо папку фічі (todolist, counter, auth, profile, contacts)
@@ -20,7 +17,7 @@ npm install @redux-devtools/extension
 - selectors.js
 - constants.js
 
-1. reducer.js - Налаштовуємо редьюсер
+### reducer.js - Налаштовуємо редьюсер
 
 ```
 const initialState = {
@@ -37,7 +34,7 @@ export const todosReducer = (state = initialState, action) => {
 };
 ```
 
-1. Створюємо `store.js` в корні папки `redux`
+### Створюємо `store.js` в корні папки `redux`
 
 ```
 import { createStore } from 'redux';
@@ -51,7 +48,7 @@ export const store = createStore(todosReducer, enhancer);
 
 ```
 
-1. Ідемо в `main.jsx` підключаємо redux
+### Ідемо в `main.jsx` підключаємо redux
 
 ```
 <Provider store={store}>
@@ -63,13 +60,13 @@ export const store = createStore(todosReducer, enhancer);
 
 - провайдер отримуємо з бібліотеки `react-redux`
 
-1.  Ідемо до компонента і використовуємо `useSelector`
+### Ідемо до компонента і використовуємо `useSelector`
 
 ```
 const items = useSelector(state => state.items)
 ```
 
-1. Робимо логіку за допомоги `useDispatch`
+### Робимо логіку за допомоги `useDispatch`
 
 - Отримуємо dispatch
   ` const dispatch = useDispatch()`
@@ -78,7 +75,7 @@ const items = useSelector(state => state.items)
   - action - весь об'єкт всереді діспатча
   - payload - корисна нагрузка до редакса. Може містити будьякий тип (строка, число , бул, массив, об'єкт)
 
-1. Ідемо до редьюсера і відловлюємо наш екшен
+### Ідемо до редьюсера і відловлюємо наш екшен
 
 ```
 export const todosReducer = (state = initialState, action) => {
