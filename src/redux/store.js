@@ -1,25 +1,10 @@
-import { combineReducers, createStore } from 'redux';
 import { counterReducer } from './counter/reducer';
-import { devToolsEnhancer } from '@redux-devtools/extension';
 import { todosReducer } from './todolist/reducer';
+import { configureStore } from '@reduxjs/toolkit';
 
-const enhancer = devToolsEnhancer();
-
-const rootReducer = combineReducers({
-  todos: todosReducer,
-  counter: counterReducer,
+export const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+    counter: counterReducer,
+  },
 });
-
-// Store - сукупність стейта і його функцій (REDUCERS)
-export const store = createStore(rootReducer, enhancer);
-
-// {
-//   counter:{
-//     counter:0,
-//     step:1
-//   },
-//   todos:{
-//     todos:[],
-//     filter: 'all'
-//   }
-// }
