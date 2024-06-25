@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteItem } from '../../redux/todolist/actions';
+import { deleteItem } from '../../redux/todolist/slice';
 
 export const Item = ({ item }) => {
   const { todo } = item;
