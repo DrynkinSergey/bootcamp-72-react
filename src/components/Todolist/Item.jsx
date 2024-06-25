@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteItem } from '../../redux/todolist/slice';
+import { deleteItem, toggleTodo } from '../../redux/todolist/slice';
 
 export const Item = ({ item }) => {
   const { todo } = item;
@@ -8,7 +8,7 @@ export const Item = ({ item }) => {
     <li className='card bg-base-100  shadow-xl'>
       <div className='card-body'>
         <h2 className='card-title'> {todo}</h2>
-        <input type='checkbox' />
+        <input type='checkbox' checked={item.completed} onChange={() => dispatch(toggleTodo(item.id))} />
         <div className='card-actions justify-end'>
           <button onClick={() => dispatch(deleteItem(item.id))} className='btn btn-primary'>
             Delete

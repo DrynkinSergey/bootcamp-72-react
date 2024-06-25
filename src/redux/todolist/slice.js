@@ -5,7 +5,7 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: 'todos',
+  name: 'todolist',
   initialState,
   selectors: {
     selectTodos: state => state.items,
@@ -13,6 +13,10 @@ const slice = createSlice({
   reducers: {
     deleteItem: (state, action) => {
       state.items = state.items.filter(item => item.id !== action.payload);
+    },
+    toggleTodo: (state, action) => {
+      const item = state.items.find(item => item.id === action.payload);
+      item.completed = !item.completed;
     },
     // addTodo: (state, action) => {
     //   state.items.push(action.payload);
@@ -36,5 +40,5 @@ const slice = createSlice({
 });
 
 export const todosReducer = slice.reducer;
-export const { deleteItem, addTodo } = slice.actions;
+export const { deleteItem, addTodo, toggleTodo } = slice.actions;
 export const { selectTodos } = slice.selectors;
