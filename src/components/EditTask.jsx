@@ -2,24 +2,19 @@ import { nanoid } from '@reduxjs/toolkit';
 import { Field, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectColumns } from '../redux/columns/slice';
-import { addTask } from '../redux/tasks/slice';
 import { selectUser } from '../redux/auth/slice';
+import { editTask } from '../redux/tasks/slice';
 
-export const AddTask = ({ close, tableId }) => {
+export const EditTask = ({ close, task }) => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
   const handleSubmit = values => {
-    dispatch(addTask(values));
+    console.log(values);
+    dispatch(editTask(values));
     close();
   };
   const tables = useSelector(selectColumns);
   const initialValues = {
-    id: nanoid(),
-    title: '',
-    author: user.email,
-    createdAt: new Date(),
-    table: tableId,
-    description: '',
+    ...task,
   };
   return (
     <div className='w-[600px]'>
@@ -56,7 +51,10 @@ export const AddTask = ({ close, tableId }) => {
             />
           </div>
           <button type='submit' className='btn btn-primary'>
-            Create
+            Save
+          </button>
+          <button onClick={close} type='button' className='btn btn-error'>
+            Cancel
           </button>
         </Form>
       </Formik>

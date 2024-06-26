@@ -1,15 +1,23 @@
 import { Field, Form, Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
+import { login, selectIsLoggedIn } from '../redux/auth/slice';
 
 export const Login = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const handleSubmit = (values, options) => {
     console.log(values);
+    dispatch(login(values));
     options.formReset();
   };
   const initialValues = {
     email: '',
     password: '',
   };
+  if (isLoggedIn) {
+    return <Navigate to='/' replace={true} />;
+  }
   return (
     <div className='hero bg-base-200 min-h-screen'>
       <div className='hero-content flex-col lg:flex-row-reverse'>

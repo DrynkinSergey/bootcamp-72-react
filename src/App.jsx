@@ -4,6 +4,7 @@ import { Trello } from './pages/Trello';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { PrivateRoute } from './routes/PrivateRoute';
+import { Profile } from './pages/Profile';
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
         }
       >
         <Route index element={<Trello />} />
+        <Route path='profile' element={<Profile />} />
       </Route>
       <Route path='/login' element={<Login />} />
       <Route path='/register' element={<Register />} />

@@ -3,17 +3,17 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   tasks: [
     {
-      id: 1,
+      id: '1',
       title: 'Create redux',
       table: '1',
     },
     {
-      id: 2,
+      id: '2',
       title: 'Create table',
       table: '1',
     },
     {
-      id: 3,
+      id: '3',
       title: 'Create structure',
       table: '2',
     },
