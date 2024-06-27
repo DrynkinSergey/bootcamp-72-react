@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../../redux/todolist/slice';
 import { nanoid } from '@reduxjs/toolkit';
+import { addTodoThunk } from '../../redux/todolist/operations';
 
 export const Addform = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -12,7 +12,7 @@ export const Addform = () => {
       completed: false,
       todo: data.todo,
     };
-    dispatch(addTodo(data.todo));
+    dispatch(addTodoThunk(data.todo));
     reset();
   };
   return (
