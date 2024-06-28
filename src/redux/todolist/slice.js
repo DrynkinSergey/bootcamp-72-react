@@ -1,6 +1,7 @@
 import { createSlice, isAnyOf, nanoid } from '@reduxjs/toolkit';
 import { addTodoThunk, deleteThunk, fetchDataThunk, toggleTodoThunk } from './operations';
 import toast from 'react-hot-toast';
+import { selectFilter } from '../filterSlice';
 
 const initialState = {
   items: [],
@@ -54,6 +55,26 @@ const slice = createSlice({
       );
   },
 });
+
+export const selectFilteredData = state => {
+  const filter = selectFilter(state);
+  const items = selectTodos(state);
+  switch (filter) {
+    case 'all':
+      return items;
+    case 'active':
+      return items.filter(item => !item.completed);
+    case 'completed':
+      return items.filter(item => item.completed);
+    default:
+      break;
+  }
+};
+
+export const selectUncompletedTodos = state => {
+  const items = selectTodos(state);
+  return items.reduce((total, item) => (item.completed ? total : total + 1), 0);
+};
 
 export const todosReducer = slice.reducer;
 
