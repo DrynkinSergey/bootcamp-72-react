@@ -1,10 +1,8 @@
-import { Counter } from './components/Counter/Counter';
-import { TodoListApp } from './components/Todolist/TodoListApp';
+import { TodoListApp } from './components/TodolistRTQ/TodoListApp';
 
 export const App = () => {
   return (
     <>
-      {/* <Counter /> */}
       <TodoListApp />
     </>
   );
