@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { todosReducer } from './todolist/slice';
 import { filterReducer } from './filterSlice';
 import { todoApi } from './todoApi';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 export const store = configureStore({
   reducer: {
@@ -13,3 +14,5 @@ export const store = configureStore({
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(todoApi.middleware),
 });
+
+setupListeners(store.dispatch);

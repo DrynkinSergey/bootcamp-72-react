@@ -2,6 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const todoApi = createApi({
   tagTypes: ['todos'],
+  refetchOnFocus: true,
+  refetchOnReconnect: true,
   reducerPath: 'todoApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://667d0cc0297972455f633f0e.mockapi.io/',
@@ -26,7 +28,18 @@ export const todoApi = createApi({
       }),
       invalidatesTags: ['todos'],
     }),
+    toggleTodo: builder.mutation({
+      query: todo => ({
+        url: `todos/${todo.id}`,
+        method: 'PUT',
+        body: {
+          ...todo,
+          completed: !todo.completed,
+        },
+      }),
+      invalidatesTags: ['todos'],
+    }),
   }),
 });
 
-export const { useGetTodosQuery, useAddTodoMutation, useDeleteTodoMutation } = todoApi;
+export const { useGetTodosQuery, useAddTodoMutation, useDeleteTodoMutation, useToggleTodoMutation } = todoApi;
