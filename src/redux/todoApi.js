@@ -9,7 +9,14 @@ export const todoApi = createApi({
     getTodos: builder.query({
       query: () => 'todos',
     }),
+    addTodo: builder.mutation({
+      query: body => ({
+        url: 'todos',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetTodosQuery } = todoApi;
+export const { useGetTodosQuery, useAddTodoMutation } = todoApi;

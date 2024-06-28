@@ -1,9 +1,12 @@
 import { useForm } from 'react-hook-form';
+import { useAddTodoMutation } from '../../redux/todoApi';
 
 export const Addform = () => {
   const { register, handleSubmit, reset } = useForm();
+  const [addTodo] = useAddTodoMutation();
   const onSubmit = data => {
     reset();
+    addTodo({ todo: data.todo });
   };
   return (
     <div className='py-4 '>
