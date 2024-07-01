@@ -20,3 +20,21 @@ export const addTransactionThunk = createAsyncThunk('addTransaction', async (tra
     return thunkApi.rejectWithValue(error.message);
   }
 });
+
+export const deleteTransactionThunk = createAsyncThunk('deleteTransaction', async (id, thunkApi) => {
+  try {
+    await axios.delete(`transactions/${id}`);
+    return id;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});
+
+export const editTransactionThunk = createAsyncThunk('editTransaction', async (transaction, thunkApi) => {
+  try {
+    const { data } = await axios.put(`transactions/${transaction.id}`, transaction);
+    return data;
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});
