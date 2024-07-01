@@ -2,6 +2,7 @@ import { CirclePlus } from 'lucide-react';
 import { Transactions } from '../components/Transactions/Transactions';
 import { useNavigate } from 'react-router-dom';
 import { DashboardInfo } from '../components/Transactions/DashboardInfo';
+import { LineChart } from '../components/Transactions/LineChart';
 
 export const Dashboard = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ export const Dashboard = () => {
     <section className='relative '>
       <DashboardInfo />
       <Transactions />
+      <LineChart />
       <button onClick={() => navigate('/add')} className='fixed right-10 bottom-10'>
         <CirclePlus size={48} />
       </button>
