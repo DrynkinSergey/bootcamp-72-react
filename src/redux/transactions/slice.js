@@ -2,7 +2,17 @@ import { createSlice } from '@reduxjs/toolkit';
 import { addTransactionThunk, fetchTransactionsThunk } from './operations';
 
 const initialState = {
-  transactions: [],
+  transactions: [
+    {
+      id: 1,
+      comment: 'Salary',
+      sum: 120000,
+      type: 'income',
+      category: 'Salary',
+      createdAt: new Date(),
+      author: 'Alex',
+    },
+  ],
   error: false,
   isLoading: false,
 };

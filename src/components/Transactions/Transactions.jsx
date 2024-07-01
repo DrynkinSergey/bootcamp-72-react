@@ -1,3 +1,9 @@
+import { List } from './List';
+
 export const Transactions = () => {
-  return <div></div>;
+  return (
+    <>
+      <List />
+    </>
+  );
 };
