@@ -1,8 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { selectIsLoggedIn, selectUser } from '../redux/auth/slice';
+import { logoutThunk } from '../redux/auth/operations';
 
 export const Header = () => {
+  const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
@@ -28,7 +30,9 @@ export const Header = () => {
         )}
         {isLoggedIn && (
           <li>
-            <button className='btn btn-primary'>Logout</button>
+            <button onClick={() => dispatch(logoutThunk())} className='btn btn-primary'>
+              Logout
+            </button>
           </li>
         )}
       </ul>
