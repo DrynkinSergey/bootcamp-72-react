@@ -4,16 +4,39 @@ import { Home } from './pages/Home';
 import { Todos } from './pages/Todos';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import { PrivateRoute } from './routes/PrivateRoute';
+import { PublicRoute } from './routes/PublicRoute';
 
 export const App = () => {
   return (
     <Routes>
-      <Route path='/' element={<Layout />}>
+      <Route
+        path='/'
+        element={
+          <PrivateRoute>
+            <Layout />
+          </PrivateRoute>
+        }
+      >
         <Route index element={<Home />} />
         <Route path='todos' element={<Todos />} />
-        <Route path='login' element={<Login />} />
-        <Route path='register' element={<Register />} />
       </Route>
+      <Route
+        path='/login'
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path='/register'
+        element={
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        }
+      />
     </Routes>
   );
 };

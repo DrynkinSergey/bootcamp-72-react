@@ -27,3 +27,6 @@ body{
   border-bottom: black;
   padding-bottom: 5px;
 }
+.active{
+  @apply text-blue-800;
+}
