@@ -2,6 +2,7 @@ import { createSelector, createSlice, isAnyOf, nanoid } from '@reduxjs/toolkit';
 import { addTodoThunk, deleteThunk, fetchDataThunk, toggleTodoThunk } from './operations';
 import toast from 'react-hot-toast';
 import { selectFilter } from '../filterSlice';
+import { logoutThunk } from '../auth/operations';
 
 const initialState = {
   items: [],
@@ -37,6 +38,9 @@ const slice = createSlice({
       .addCase(toggleTodoThunk.fulfilled, (state, action) => {
         const item = state.items.find(item => item.id === action.payload);
         item.completed = !item.completed;
+      })
+      .addCase(logoutThunk.fulfilled, () => {
+        return initialState;
       })
 
       .addMatcher(
